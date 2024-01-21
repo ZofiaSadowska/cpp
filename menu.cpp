@@ -28,10 +28,7 @@ int main()
         m = Menu();
         switch(m)
         {
-        case 7:
-            {
-                return 0;
-            }
+        
         case 1:
             {
                 int * tmp = NULL;
@@ -148,6 +145,10 @@ int main()
                 file.close();
             }
             break;
+        case 7:
+            {
+                return 0;
+            }
         default:
             {
                 cout<<"Nieprawidlowa opcja"<<endl;
