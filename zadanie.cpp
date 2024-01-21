@@ -95,14 +95,59 @@ int main()
             }
         case 5:
             {
-                //zapis danych do pliku
-                break;
+                fstream file;
+                file.open("C:\\users\\student\\desktop\\plik.txt", ios::out | ios::trunc);
+                if (file.is_open())
+                {
+                    for(int i = 0; i < size; i++)
+                    {
+                        if(i != size - 1)
+                        {
+                            file << p[i] << endl;
+                        }
+                        else
+                        {
+                            file << p[i];
+                        }
+                    }
+                    file.close();
+                }
             }
+            break;
         case 6:
             {
-                //wczytanie danych z pliku
-                break;
+                fstream file;
+                file.open("C:\\users\\student\\desktop\\plik.txt", ios::in);
+                if(file.is_open())
+                {
+                    string str;
+                    int i = 0;
+
+                    while(!file.eof())
+                    {
+                        getline(file, str);
+                        i++;
+                    }
+
+                    int* new_pointer = NULL;
+                    new_pointer = new int[i];
+                    size = indicator;
+                    i = 0;
+                    file.clear();
+                    file.seekg(0);
+
+                    while(!file.eof())
+                    {
+                        getline(file, str);
+                        new_pointer[i] = atoi(str.c_str());
+                        indicator++;
+                    }
+                    delete[] p;
+                    p = new_pointer;
+                }
+                file.close();
             }
+            break;
         default:
             {
                 cout<<"Nieprawidlowa opcja"<<endl;
